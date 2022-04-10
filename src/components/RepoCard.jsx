@@ -5,7 +5,7 @@ function RepoCard({ data }) {
   return (
     <article className={` w-11/12 border-b-1 border-dark p-4`}>
       <div>
-        <h1 className={`md:text-3xl text-xl text-blue-500 font-bold`}>
+        <h1 className={`md:text-3xl text-xl text-blue-500 font-bold hover:underline`}>
           <a href={data.html_url} target="_blank" referrerPolicy="no-referrer">
             {data.name}
           </a>
