@@ -87,7 +87,7 @@ const UserDetails = ({ inputUsername }) => {
           >
             <BsLink45Deg size={20} />
             <a
-              href={"https://" + userData.blog}
+              href={userData.blog}
               target="_blank"
               referrerPolicy="no-referrer"
               className={`hover:text-blue-500 hover:underline`}
