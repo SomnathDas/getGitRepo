@@ -25,8 +25,15 @@ const Pagination = ({
         if (res.status !== 200) {
           setIsError(true);
         }
+        // Get "link" headers from the response
+        const linkString = res.headers.get("link");
+        // Check if the returned string is null
+        if (linkString === null) {
+          setPageCount(1);
+          return res.json();
+        }
         // Split the "link" response header
-        const strArr = getLinks(res.headers.get("link"));
+        const strArr = getLinks(linkString);
         // Separate &page=10 from the last page "link" reponse header
         const x = strArr[strArr.length - 1].split("=");
         // Get the integer of last page number
@@ -37,8 +44,9 @@ const Pagination = ({
       .then(() => {
         setLoading(false);
       })
-      .catch(() => {
+      .catch((error) => {
         setIsError(true);
+        console.log(error);
       });
   }, []);
 
